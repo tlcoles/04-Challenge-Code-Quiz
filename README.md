@@ -5,9 +5,9 @@ An assignment of the ESMT Coding Boot Camp. Apply your skills in CSS, HTML, and 
 ## Changelog
 
 ## Special challenges
-
+* Setting and displaying a three-minute timer
 ## Gratitude
-
+@vaidehijoshi for "The Final Countdown: Using JavaScript’s setInterval + clearInterval Methods"
 ## Contact
 Tammi L. Coles
 URL of deployed application:  
