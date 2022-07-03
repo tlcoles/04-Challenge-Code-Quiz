@@ -1,9 +1,29 @@
-/* Google Fonts Material Symbols styling */
-:root {
-    font-family: 'Libre Baskerville', 'Garamond', serif; 
-    font-family: 'Libre Franklin', 'Helvetica', sans-serif;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
+:root {
+--neutral: #f1f4f5;
+--wrong: #AF0606;
+--right: #7D9F3B;
+}
+
+
+body {
+font-family: 'Libre Franklin', 'Helvetica', sans-serif;
+padding: 0;
+margin: 0;
+display: flex;
+width: 100vw;
+height: 70vh;
+justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Libre Baskerville', 'Garamond', serif; 
+}
+
+/* Google Fonts Material Symbols styling */
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
