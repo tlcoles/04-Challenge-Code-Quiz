@@ -12,7 +12,7 @@ var isFalse;
 //! Create array of questions, choices, and correct answers
 var questions = 
 [
-{
+    {
     question: "Which of these is an incorrect terminal command?",
     choices: 
         [
@@ -38,10 +38,10 @@ var questions =
     question: "Which is invalid CSS?",
     choices: 
         [
-        "<div class= definition></div>", 
-        "<div class= definition high></div>",
-        "<div class= \"definition\"></div>", 
-        "<div class= \"definition high\">/div>", 
+        "&lt;div class= definition&gt;&lt;/div&gt;", 
+        "&lt;div class= definition high&gt;&lt;/div&gt;",
+        "&lt;div class= \"definition\"&gt;&lt;/div&gt;", 
+        "&lt;div class= \"definition high\"&gt;&lt;/div&gt;", 
         ],
     answer: 1
     },
@@ -73,14 +73,16 @@ var questions =
         ".bg-primary",
         ],
     answer: 1
-}
+    }
 ];
 
 //! Start a timer and run a loop with the quiz questions
-function runQuiz() {
-    document.getElementById("start-section").classList.add("hide")
-    askQuestion();
+function runQuiz() {    
     console.log("The button is clicked!");
+    document.getElementById("start-section").classList.add("hide")
+    // Create container for question
+    createQASpace()
+    askQuestion(0);
     var quizTimer = 3;
     // ! show timer countdown in seconds
     var quizTimerEnd = 0;
@@ -95,32 +97,46 @@ function runQuiz() {
             console.log("This timer is still running!")
         }
     }, 60000);
+}
+
+function createQASpace() {
+    document.getElementById("qa-section").classList.remove("hide")
+    var qaDiv = document.getElementById("qa-section");
+    var questionDiv = document.createElement("div");
+    questionDiv.setAttribute("id", "question")
+    qaDiv.appendChild(questionDiv);
+    var answerOL = document.createElement("ol")
+    qaDiv.appendChild(answerOL);
+    answerOL.setAttribute("id", "answers")
+    var answerElement = document.getElementById("answers")
+    return
+}
+
+function createRightWrongSpace () {
+    var isRightWrongDiv = document.createElement("div")
+    isRightWrongDiv.setAttribute("id", "right-wrong")
+    isRightWrongDiv.classList.add("right-wrong")
+    answerOL.after(isRightWrongDiv) 
+}
 
 // ! Create and display a question drawing from the array of questions and answers
-function askQuestion() {
-    // Create container for question
-    var questionDiv = document.createElement("div")
-    var qaDiv = document.getElementById("qa-section");
-    var answerElement = document.getElementById("answers")
-    qaDiv.classList.remove("hide");
-    answerElement.classList.remove("hide");
+function askQuestion(i) {
+    // Ask question with answers
+            var question = questions[i].question;
+            var d = document.getElementById("question") 
+            d.innerHTML += question
+            console.log("You made it to questions!");
+            for (var j=0; j < questions[i].choices.length; j++) { 
+                var choice = questions[i].choices[j];
+                var li = document.getElementById("answers")
+                li.innerHTML
+                += ("<li><button class=\"btn btn-primary btn-lg\">" 
+                + choice 
+                + "</button></li>");
+        }   console.log("You made it to answers!");
 
-    // Ask question
-    for (var i = 0; i < questions.length; i++) {
-        var question = questions[i].question;
-        questionDiv.setAttribute("id", "question-area");
-        questionDiv.classList.add("question-style");
-        questionDiv.innerHTM = question
-        qaDiv.appendChild(questionDiv);
-
-    // Provide answer options
-    for ( i=0; i< questions.answers.length; i++){
-        answerElement.innerHTML += "<li><button class=\"btn btn-primary btn-lg\">" +questions[i].answers + "</button></li>"
-        }
-  }
 }
-  }
-
+ 
 function isCorrect() {
     console.log("Correct answer!")
     userScore += 10
@@ -139,5 +155,5 @@ function endQuiz() {
 
 // When button is clicked, runQuiz
 startBtn.onclick = function() {
-    runQuiz()
+    runQuiz();
 }
