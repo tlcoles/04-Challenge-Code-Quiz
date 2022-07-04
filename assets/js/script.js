@@ -1,36 +1,125 @@
-var startBtn = $("#start-button")
-var question
-var answer
-var a
-var b
-var c
-var d
-var isTrue
-var isFalse
 
+const startBtn = document.getElementById("start-button");
+const startSection = document.getElementById("start-section");
+var quizTimer;
+var a;
+var b;
+var c;
+var d;
+var isTrue;
+var isFalse;
 
-function runQuiz() {
-    console.log("The button is clicked!")
-    var counter = 3
-    var countDown = setInterval(function() {
-        counter--
-        console.log("Time remaining: " + counter);
-        if (counter === 0) {
-            console.log("Time's up!")
-            clearInterval(countDown)
-            endQuiz()
-        }
-    }, 60000)
-        // TODO after click, 
-    //! run loop equal to number of questions and then run endQuiz function
-    // get length of questions and pass to loop  
-    // insert loop here
-    // display questions and answers and styles
-    //! each time, check if user clicked the correct answer
-    //! if correct, run function isCorrect
-    //! if incorrect, run function isNotCorrect
-    // endQuiz() when runTime equals zero
+//! Create array of questions, choices, and correct answers
+var questions = 
+[
+{
+    question: "Which of these is an incorrect terminal command?",
+    choices: 
+        [
+        "ls", 
+        "cd", 
+        "dir", 
+        "pwd"        
+        ],
+    answer: 2
+    },
+    {
+    question: "To fetch changes from a Github repo to merge with your local directory, use...",
+    choices: 
+        [
+        "git commit", 
+        "git pull",
+        "git push", 
+        "git add", 
+        ],
+    answer: 1
+    },
+    {
+    question: "Which is invalid CSS?",
+    choices: 
+        [
+        "<div class= definition></div>", 
+        "<div class= definition high></div>",
+        "<div class= \"definition\"></div>", 
+        "<div class= \"definition high\">/div>", 
+        ],
+    answer: 1
+    },
+    {
+    question: "There are THREE ways to insert a style sheet: external CSS, internal CSS, and inline CSS.",
+    choices: 
+        [
+        "True",
+        "False",
+        ],
+    answer: 0
+    },
+    {
+    question: "Using document.querySelector( \"demo \").innerHTML =  \"Hello, JavaScript! \" will find an element with id=demo and change its content to say Hello, JavaScript!",
+    choices: 
+        [
+        "True", 
+        "False",
+        ],
+    answer: 1
+    },
+    {
+    question: "Select the correct Bootstrap class to set your element's background color to white.",
+    choices: 
+        [
+        ".background-white", 
+        ".bg-white",
+        ".color-white",
+        ".bg-primary",
+        ],
+    answer: 1
 }
+];
+
+//! Start a timer and run a loop with the quiz questions
+function runQuiz() {
+    document.getElementById("start-section").classList.add("hide")
+    askQuestion();
+    console.log("The button is clicked!");
+    var quizTimer = 3;
+    // ! show timer countdown in seconds
+    var quizTimerEnd = 0;
+    var countDown = setInterval(function() {
+        quizTimer--
+        console.log("Time remaining: " + quizTimer);
+        if (quizTimer === 0) {
+            console.log("Time's up!");
+            clearInterval(countDown);
+            endQuiz();
+        } else {
+            console.log("This timer is still running!")
+        }
+    }, 60000);
+
+// ! Create and display a question drawing from the array of questions and answers
+function askQuestion() {
+    // Create container for question
+    var questionDiv = document.createElement("div")
+    var qaDiv = document.getElementById("qa-section");
+    var answerElement = document.getElementById("answers")
+    qaDiv.classList.remove("hide");
+    answerElement.classList.remove("hide");
+
+    // Ask question
+    for (var i = 0; i < questions.length; i++) {
+        var question = questions[i].question;
+        questionDiv.setAttribute("id", "question-area");
+        questionDiv.classList.add("question-style");
+        questionDiv.innerHTM = question
+        qaDiv.appendChild(questionDiv);
+
+    // Provide answer options
+    for ( i=0; i< questions.answers.length; i++){
+        answerElement.innerHTML += "<li><button class=\"btn btn-primary btn-lg\">" +questions[i].answers + "</button></li>"
+        }
+  }
+}
+  }
 
 function isCorrect() {
     console.log("Correct answer!")
@@ -39,15 +128,16 @@ function isCorrect() {
 }
 
 function isNotCorrect() {
-    console.log("Wrong answer! Try again!")
+    console.log("Wrong answer! Move on!")
 }
 
 function endQuiz() {
+    document.getElementById("qa-section").classList.add("hide")
     return console.log("This game is over!");
     //showScore and registerUser
 }
 
 // When button is clicked, runQuiz
-startBtn.on("click", function() {
+startBtn.onclick = function() {
     runQuiz()
-})
+}

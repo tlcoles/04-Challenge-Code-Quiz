@@ -3,7 +3,8 @@
 }
 
 :root {
---neutral: #f1f4f5;
+--white: #f1f4f5;
+--black: #000000;
 --wrong: #AF0606;
 --right: #7D9F3B;
 }
@@ -21,6 +22,30 @@ justify-content: center;
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Libre Baskerville', 'Garamond', serif; 
+}
+
+.hide {
+  display: none;
+}
+
+.correct {
+  background: var(--right);
+  color: var(--white);
+  border: 2px solid var(--right);
+}
+
+.incorrect {
+  background-color: var(--wrong);
+  color: #f1f4f5;
+  border: 2px solid var(--wrong);
+}
+
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  gap: 10px;
+  margin: 20px 0;
 }
 
 /* Google Fonts Material Symbols styling */
