@@ -1,3 +1,4 @@
+/* Create basic styles and color variables */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -8,7 +9,6 @@
 --wrong: #AF0606;
 --right: #7D9F3B;
 }
-
 
 body {
 font-family: 'Libre Franklin', 'Helvetica', sans-serif;
@@ -24,10 +24,12 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Libre Baskerville', 'Garamond', serif; 
 }
 
+/* Hide until javascript triggers display */
 .hide {
   display: none;
 }
 
+/* Save these for true/false test */
 .correct {
   background: var(--right);
   color: var(--white);
@@ -40,15 +42,19 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid var(--wrong);
 }
 
-
+/* Display button elements as stack and remove list style */
 .btn-grid {
   display: grid;
-  grid-template-columns: repeat(1, auto);
+  grid-template-columns: 350px 1fr max-content;
   gap: 10px;
-  margin: 20px 0;
+  margin: 10px 120px;
 }
 
-/* Google Fonts Material Symbols styling */
+ol li {
+  list-style: none!important;
+}
+
+/* Hold for later use: Google Fonts Material Symbols styling */
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,

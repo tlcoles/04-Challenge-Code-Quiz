@@ -1,14 +1,14 @@
-
+// Create global variables
 const startBtn = document.getElementById("start-button");
 const startSection = document.getElementById("start-section");
 var quizTimer;
-var a;
-var b;
-var c;
-var d;
+var i=0;
+
+// ! Hold on to these variables for later use
+/*
 var isTrue;
 var isFalse;
-var i=0;
+*/
 
 //! Create array of questions, choices, and correct answers
 var questions = 
@@ -77,6 +77,11 @@ var questions =
     }
 ];
 
+//! On button click, start the quiz
+startBtn.onclick = function() {
+    runQuiz();
+}
+
 //! Start a timer and run a loop with the quiz questions
 function runQuiz() {    
     console.log("The button is clicked!");
@@ -87,6 +92,7 @@ function runQuiz() {
     var quizTimer = 3;
     // ! show timer countdown in seconds
     var quizTimerEnd = 0;
+    console.log("The timer is now running!");
     var countDown = setInterval(function() {
         quizTimer--
         console.log("Time remaining: " + quizTimer);
@@ -100,9 +106,11 @@ function runQuiz() {
     }, 60000);
 }
 
+//! Create the display area for questions and answers
 function createQASpace() {
     document.getElementById("qa-section").classList.remove("hide")
     var qaDiv = document.getElementById("qa-section");
+    qaDiv.classList.add("text-center");
     var questionDiv = document.createElement("div");
     questionDiv.setAttribute("id", "question")
     qaDiv.appendChild(questionDiv);
@@ -113,6 +121,7 @@ function createQASpace() {
     return
 }
 
+//! Create the display area for the right/wrong result statement
 function createRightWrongSpace () {
     var isRightWrongDiv = document.createElement("div")
     isRightWrongDiv.setAttribute("id", "right-wrong")
@@ -120,25 +129,38 @@ function createRightWrongSpace () {
     answerOL.after(isRightWrongDiv) 
 }
 
-// ! Create and display a question drawing from the array of questions and answers
+// ! Draw questions and answers from the array
 function askQuestion() {
-    // Ask question with answers
+    // Ask question from array
             var question = questions[i].question;
             var d = document.getElementById("question") 
-            d.innerHTML += question
-            console.log("You made it to questions!");
+            d.innerHTML = question
+            var li = document.getElementById("answers");
+            li.innerHTML = ""; //clear previous answers before loop
+    // Show possible answers from array in created buttons    
             for (var j=0; j < questions[i].choices.length; j++) { 
                 var choice = questions[i].choices[j];
-                var li = document.getElementById("answers")
                 li.innerHTML
-                += ("<li><button class=\"btn btn-primary btn-lg\">" 
+                += ("<li><button class=\"btn btn-primary btn-lg btn-grid\">" 
                 + choice 
                 + "</button></li>");
-        }   console.log("You made it to answers!");
-        // increment i and proceed to next question
-        i++
+        } 
+    
+     // Increment i and proceed to next question
+        return i++
 }
- 
+
+// ! End the quiz and show the results
+
+function endQuiz() {
+    document.getElementById("qa-section").classList.add("hide")
+    return console.log("This game is over!");
+    //showScore and registerUser
+}
+
+
+
+// ! Hold these functions for later development
 function isCorrect() {
     console.log("Correct answer!")
     userScore += 10
@@ -147,15 +169,4 @@ function isCorrect() {
 
 function isNotCorrect() {
     console.log("Wrong answer! Move on!")
-}
-
-function endQuiz() {
-    document.getElementById("qa-section").classList.add("hide")
-    return console.log("This game is over!");
-    //showScore and registerUser
-}
-
-// When button is clicked, runQuiz
-startBtn.onclick = function() {
-    runQuiz();
 }
