@@ -9,35 +9,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@100;400;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Challenge: Code Quiz</title>
 </head>
 <body>
   <!-- Show the quiz information and start button  -->
-    <div id="content-wrapper" class="container-md bg-dark text-white">
-    <section class="start-section">
+    <div id="content-wrapper" class="container-sm px-4 py-5 my-5 text-center bg-light text-dark">
+    <section id="start-section">
       <h1>Code Quiz</h1>
-      <p>Apply your skills with this timed test!</p>
-      <p>Once you click on the <span>start</span>  button, the countdown will begin. Each <span>correct</span> answer adds 10 points to your score. Each <span>incorrect</span> answer subtracts 10 seconds from your timer. Once the countdown reaches zero, <strong>GAME OVER!</strong></p>
-      <p>Don't worry – you will have a chance to view your final score and to save your results. Start over at any time to re-test your skills.</p>
+      <p>Apply your coding bootcamp skills with this timed test!</p>
+      <p id="instructions">Once you click on the <span>start</span> button, the countdown will begin. Each <span>correct</span> answer adds 10 points to your score. Each <span>incorrect</span> answer subtracts 10 seconds from your timer. Once the countdown reaches zero, <br><br><span>GAME OVER!</span><br><br>
+      Don't worry – you will have a chance to view your final score and save your results. <br><br>
+      Start over at any time to re-test your skills.</p>
       <p>Good luck!</p>
-      <button id="start-button" type="button" class="btn-primary">Start</button>
+      <button id="start-button" type="button" class="btn btn-primary btn-lg correct">START</button>
     </section>
-
     <!-- Show the quiz questions and wrong/right response -->
-    <section class="qa-section">
-      <div class="question"></div>
-      <div class="potential-answers"></div>
-      <div class="wrong-right"></div>
+    <section id="qa-section">
+      <p>Where the question should be with js</p>
+      <ol id="answers"></ol>
+      <p>Where the answers should be with js</p>
+      <div class="wrong-right hide"></div>
     </section>
 
-    <section>
+    <section id="final-results-section">
+      <div id="times-up"></div>
       <div id="end-quiz"></div>
     </section>
   </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
