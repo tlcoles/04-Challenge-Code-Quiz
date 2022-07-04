@@ -8,6 +8,7 @@ var c;
 var d;
 var isTrue;
 var isFalse;
+var i=0;
 
 //! Create array of questions, choices, and correct answers
 var questions = 
@@ -81,7 +82,7 @@ function runQuiz() {
     console.log("The button is clicked!");
     document.getElementById("start-section").classList.add("hide")
     // Create container for question
-    createQASpace()
+    createQASpace();
     askQuestion(0);
     var quizTimer = 3;
     // ! show timer countdown in seconds
@@ -120,7 +121,7 @@ function createRightWrongSpace () {
 }
 
 // ! Create and display a question drawing from the array of questions and answers
-function askQuestion(i) {
+function askQuestion() {
     // Ask question with answers
             var question = questions[i].question;
             var d = document.getElementById("question") 
@@ -134,7 +135,8 @@ function askQuestion(i) {
                 + choice 
                 + "</button></li>");
         }   console.log("You made it to answers!");
-
+        // increment i and proceed to next question
+        i++
 }
  
 function isCorrect() {
