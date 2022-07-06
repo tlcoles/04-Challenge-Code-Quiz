@@ -149,8 +149,8 @@ function askQuestion() {
             for (var j=0; j < questions[i].choices.length; j++) { 
                 var choice = questions[i].choices[j];
                 li.innerHTML
-                //create buttons and make ids equal to index+1
-                += (`<li id="${j + 1}"><button class="btn btn-primary btn-lg btn-grid">` 
+                //create buttons, make ids equal to index+1, and create onclick
+                += (`<li id="${j + 1}" onclick="recordID(this.id);"><button class="btn btn-primary btn-lg btn-grid">` 
                 + choice 
                 + `</button></li>`);
                 console.log(j)
@@ -171,6 +171,11 @@ function endQuiz() {
     //showScore and registerUser
 }
 
+// ! On click, record the id of the selected choice
+function recordID(id) {
+    var answerID = id;
+    return answerID;
+}
 
 
 // ! Hold these functions for later development
