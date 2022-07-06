@@ -85,25 +85,25 @@ startBtn.onclick = function() {
 //! Start a timer and run a loop with the quiz questions
 function runQuiz() {    
     console.log("The button is clicked!");
-    document.getElementById("start-section").classList.add("hide")
+    document.getElementById("start-section").classList.add("hide");
     // Create container for question
     createQASpace();
     askQuestion(0);
-    var quizTimer = 3;
-    // ! show timer countdown in seconds
+    var quizTimer = 60;
+    showTimer();
+    // ! Show timer countdown in seconds
     var quizTimerEnd = 0;
     console.log("The timer is now running!");
     var countDown = setInterval(function() {
         quizTimer--
-        console.log("Time remaining: " + quizTimer);
         if (quizTimer === 0) {
             console.log("Time's up!");
             clearInterval(countDown);
             endQuiz();
         } else {
-            console.log("This timer is still running!")
+            document.getElementById("time-remaining").innerHTML = "<h2>Seconds remaining: " + quizTimer + "</h2>"
         }
-    }, 60000);
+    }, 1000);
 }
 
 //! Create the display area for questions and answers
@@ -122,11 +122,19 @@ function createQASpace() {
 }
 
 //! Create the display area for the right/wrong result statement
-function createRightWrongSpace () {
+function createRightWrongSpace() {
     var isRightWrongDiv = document.createElement("div")
     isRightWrongDiv.setAttribute("id", "right-wrong")
     isRightWrongDiv.classList.add("right-wrong")
-    answerOL.after(isRightWrongDiv) 
+    document.getElementById("qa-section").appendChild(isRightWrongDiv);
+}
+
+//! Create the display area for the timer
+function showTimer() {
+    var remainingTime = document.createElement("div")
+    remainingTime.setAttribute("id", "time-remaining")
+    remainingTime.innerHTML = "<h2>Seconds remaining" +quizTimer +"</h2>"
+    document.getElementById("qa-section").appendChild(remainingTime);
 }
 
 // ! Draw questions and answers from the array
@@ -154,7 +162,9 @@ function askQuestion() {
 
 function endQuiz() {
     document.getElementById("qa-section").classList.add("hide")
-    return console.log("This game is over!");
+    document.getElementById("final-results-section").classList.remove("hide")
+    document.getElementById("times-up").innerHTML = "<h2>Time's up!</h2><br><p>Let's review your results.</p>"
+        return console.log("This game is over!");
     //showScore and registerUser
 }
 
