@@ -10,11 +10,13 @@ An assignment of the ESMT Coding Boot Camp. Apply your skills in CSS, HTML, and 
 * Showing and hiding sections on a page
 * Creating an array of questions and answers
 * Selecting and displaying one question with multiple answers
+* Dynamically creating id numbers for list elements
 ## Gratitude
 * @vaidehijoshi for "The Final Countdown: Using JavaScript’s setInterval + clearInterval Methods"
 * Web Dev Simplified for "Build A Quiz App With JavaScript"
 * Sandeep Nayak for the reply to "[Storing quiz questions in array of objects](https://stackoverflow.com/questions/37252041/storing-quiz-questions-in-array-of-objects)" (Stackoverflow)
 * Tiffany Conroy for assistance with pulling data from arrays (objects, properties)
+* MDN for the example code that helped me with creating id numbers dynamically. Source: "[Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML#appending_html_to_an_element)" and 
 * My coding camp study buddies!
 ## Contact
 Tammi L. Coles
