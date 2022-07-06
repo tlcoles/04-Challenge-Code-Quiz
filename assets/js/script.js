@@ -149,11 +149,14 @@ function askQuestion() {
             for (var j=0; j < questions[i].choices.length; j++) { 
                 var choice = questions[i].choices[j];
                 li.innerHTML
-                += ("<li><button class=\"btn btn-primary btn-lg btn-grid\">" 
+                //create buttons and make ids equal to index+1
+                += (`<li id="${j + 1}"><button class="btn btn-primary btn-lg btn-grid">` 
                 + choice 
-                + "</button></li>");
+                + `</button></li>`);
+                console.log(j)
+                console.log(choice)
         } 
-    
+
      // Increment i and proceed to next question
         return i++
 }
