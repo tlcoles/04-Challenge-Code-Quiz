@@ -2,8 +2,8 @@
 An assignment of the ESMT Coding Boot Camp. Apply your skills in CSS, HTML, and Javascript with this timed test.
 
 ## Snapshot
-![Quiz start page](./assets/images/220604-04-Challenge-Code-Quiz-start.png)
-![Quiz Q&A page](./assets/images/220604-04-Challenge-Code-Quiz-qa.png)
+![Quiz start page](./assets/images/220604-04-Challenge-Code-Quiz-start_v2.png)
+![Quiz Q&A page](./assets/images/220604-04-Challenge-Code-Quiz-qa_v2.png)
 
 ## Special challenges
 * Setting and logging a three-minute timer
