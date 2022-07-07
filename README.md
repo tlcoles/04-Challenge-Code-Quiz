@@ -12,6 +12,10 @@ An assignment of the ESMT Coding Boot Camp. Apply your skills in CSS, HTML, and 
 * Selecting and displaying one question with multiple answers
 * Dynamically creating id numbers for list elements
 * Logging a selected choice
+* Identifying correct selection in array
+* Index vs natural numbers
+* Onclick vs event listener
+* Error management with negative values on time or too many questions
 ## Gratitude
 * @vaidehijoshi for "The Final Countdown: Using JavaScript’s setInterval + clearInterval Methods"
 * Web Dev Simplified for "Build A Quiz App With JavaScript"
