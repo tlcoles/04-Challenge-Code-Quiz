@@ -2,7 +2,7 @@
 const startBtn = document.getElementById("start-button");
 const startSection = document.getElementById("start-section");
 var i=0;
-var quizTimer = 60;
+var quizTimer = 5000;
 
 // ! Hold on to these variables for later use
 /*
@@ -145,6 +145,7 @@ function createRightWrongSpace() {
 
 // ! Draw questions and answers from the array, display answers as buttons with corresponding id numbers
 function askQuestion() {
+    console.log(i, "askQ");
     // Ask question from array
             var question = questions[i].question;
             var d = document.getElementById("question") 
@@ -165,19 +166,26 @@ function askQuestion() {
 //* On click, record the id of the selected choice and check against answer
 // Function is called in the HTML with onclick
 
-        function isCorrect(id) {
-            // the purpose of the function is to evaluate whether the input is the same as the answer 
+function isCorrect(id) {
+    // the purpose of the function is to evaluate whether the input is the same as the answer 
 
-            console.log(id, "inside isCorrect function");
-                if ( id == questions[i].answer ) {
-                console.log("Hurrah! Right choice!")
-                }
-                else {
-                console.log("Bummer! Better luck with the next one!")
-                quizTimer = quizTimer - 10;
-                //! reduce the time/score
-                }
+    console.log(id, "inside isCorrect function");
+        if ( id == questions[i].answer ) {
+        alert("Hurrah! Right choice!")
         }
+        else {
+        alert("Bummer! Better luck with the next one!")
+        quizTimer = quizTimer - 10;
+        }
+//! progress to the next question
+i++
+if (i < questions.length) {
+    askQuestion()
+    }
+    else {
+        endQuiz()
+    }
+}
 
 //! Create function to tally score
 
