@@ -1,8 +1,8 @@
 //* Create global variables
 const startBtn = document.getElementById("start-button");
 const startSection = document.getElementById("start-section");
-var quizTimer;
 var i=0;
+var quizTimer = 60;
 
 // ! Hold on to these variables for later use
 /*
@@ -96,7 +96,6 @@ function createQASpace() {
 function showTimer() {
     var remainingTime = document.createElement("div")
     remainingTime.setAttribute("id", "time-remaining")
-    remainingTime.innerHTML = "<h2>Seconds remaining" +quizTimer +"</h2>"
     document.getElementById("qa-section").appendChild(remainingTime);
 }
 
@@ -121,19 +120,17 @@ function runQuiz() {
 
 //* Start the timer at 60 seconds and show remaining time on screen
 function runTimer() {
-    var quizTimer = 60;
     showTimer();
-    var quizTimerEnd = 0;
     console.log("The timer is now running!");
     var countDown = setInterval(function() {
-        quizTimer--
-        if (quizTimer === 0) {
+        if (quizTimer <= 0) {
             console.log("Time's up!");
             clearInterval(countDown);
             endQuiz();
         } else {
             document.getElementById("time-remaining").innerHTML = "<h2>Seconds remaining: " + quizTimer + "</h2>"
         }
+        quizTimer--
     }, 1000);
 }
 
@@ -159,40 +156,33 @@ function askQuestion() {
                 var choice = questions[i].choices[j];
                 li.innerHTML
                 //create buttons, make ids equal to index+1, and create onclick
-                += (`<li id="${j + 1}" onclick="recordID(this.id);"><button class="btn btn-primary btn-lg btn-grid">` //! note formatting
+                += (`<li id="${j + 1}" onclick="isCorrect(this.id);"><button class="btn btn-primary btn-lg btn-grid">` //! note formatting
                 + choice 
                 + `</button></li>`);
         }
 }
 
-// ! On click, record the id of the selected choice and check against answer
-function recordID(id) {
-    var answerID = id;
-    console.log(answerID);
-    isCorrect()
-    return answerID;
+//* On click, record the id of the selected choice and check against answer
+// Function is called in the HTML with onclick
 
-        function isCorrect() {
+        function isCorrect(id) {
             // the purpose of the function is to evaluate whether the input is the same as the answer 
-            console.log(answerID, "inside isCorrect function");
-            var userScore = 0;
-                if ( answerID == questions[i].answer ) {
+
+            console.log(id, "inside isCorrect function");
+                if ( id == questions[i].answer ) {
                 console.log("Hurrah! Right choice!")
-                userScore =+ 10
-                console.log(userScore)
                 }
                 else {
                 console.log("Bummer! Better luck with the next one!")
-                userScore =- 10
-                console.log(userScore)
+                quizTimer = quizTimer - 10;
+                //! reduce the time/score
                 }
-                return userScore
         }
-}
 
 //! Create function to tally score
 
 //* End the quiz, create a space for and show results
+//! Show time/score
 
 function endQuiz() {
     document.getElementById("qa-section").classList.add("hide")
